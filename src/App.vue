@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Navigation from '@components/Navigation.vue'
 import Home from '@components/Home.vue'
 import Services from '@components/Services.vue'
@@ -45,6 +46,8 @@ const sectionColors: Record<string, { orb1: string; orb2: string; orb3: string; 
 }
 
 const colors = computed(() => sectionColors[activeSection.value] || sectionColors.home)
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -144,11 +147,11 @@ const colors = computed(() => sectionColors[activeSection.value] || sectionColor
       <div class="flex items-center gap-4">
         <div class="relative">
           <div class="text-2xl tracking-[0.3em] bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-            JA
+            Z
           </div>
           <div class="absolute -bottom-2 left-0 right-0 h-px bg-gradient-to-r from-blue-400 to-transparent"></div>
         </div>
-        <div class="text-xs text-slate-500 tracking-wider">PORTFOLIO 2025</div>
+        <div class="text-xs text-slate-500 tracking-wider">{{ t('app.branding') }}</div>
       </div>
     </div>
 
@@ -175,14 +178,6 @@ const colors = computed(() => sectionColors[activeSection.value] || sectionColor
           <span class="text-xs uppercase tracking-wider">{{ social.icon }}</span>
           <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-violet-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </button>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2">
-      <div class="text-xs text-slate-500 tracking-widest uppercase">Scroll</div>
-      <div class="w-px h-16 bg-gradient-to-b from-blue-500 to-transparent relative overflow-hidden">
-        <div class="absolute top-0 left-0 right-0 h-8 bg-blue-400 animate-pulse"></div>
       </div>
     </div>
   </div>
